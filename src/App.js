@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import { useState } from "react";
+import { Calendar } from "./Calendar"
 import './App.css';
+import { MOCKAPPS } from "./Calendar/conts";
 
-function App() {
+export default function App() {
+
+  const [events, setEvents] = useState(MOCKAPPS);
+
+  const addEvent = (date, color) => {
+    const text = window.prompt("text");
+    setEvents((prev) => [
+      ...prev, 
+      { date, title: text, color, id: Math.random() }
+    ])
+  };
+
+  const onDragEvents = (updatedEvents) => {
+    setEvents(updatedEvents)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <div className="App">
+    <Calendar 
+      startingDate={new Date()} 
+      eventsArr={events} 
+      addEvent={addEvent}
+      onDragEvents={onDragEvents}
+    />
+  </div>
+  )
 }
 
-export default App;

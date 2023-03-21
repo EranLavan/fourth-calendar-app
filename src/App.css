@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -31,8 +37,7 @@
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
-  }
-  to {
+  } to {
     transform: rotate(360deg);
   }
 }
