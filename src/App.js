@@ -1,10 +1,13 @@
 import { useState } from "react";
 // import { Calendar } from "./Calendar"
-import './App.css';
+// import './App.css';
+import './styles/styles.scss'
 import ExperimentOne from "./components/ExperimentOne.js";
 // import { MOCKAPPS } from "./Calendar/conts";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from './components/Home';
 
-export default function App() {
+function App() {
 
   // const [events, setEvents] = useState(MOCKAPPS);
 
@@ -31,10 +34,17 @@ export default function App() {
   // )
 
   return (
-    <div>
-      <ExperimentOne />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
+
+    // <Home />
   )
 
 }
 
+export default App;
+
+// node-sass not added properly
